@@ -4,7 +4,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    # ('Tristram Oaten', 'tristram@oaten.name'),
+    # ('Karl Williams', 'karl@deadlight.net'),
 )
 
 MANAGERS = ADMINS
@@ -21,11 +22,11 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/London'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-uk'
 
 INTERNAL_IPS = ('127.0.0.1',)
 
@@ -37,7 +38,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -72,11 +73,13 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'gmr_django.urls'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+import os
+gmr_template = os.path.dirname( __file__ ) + '/templates' 
+TEMPLATE_DIRS = (gmr_template)
+
+gmr_doc_root = os.path.dirname( __file__ ) + '/site_media' 
+STATIC_DOC_ROOT = gmr_doc_root
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -32,7 +32,7 @@ class PlaylistTrack(models.Model):
     position = models.IntegerField()
 
 
-# We'll phase out nudges in favor of a average-based pass
+#TODO: We'll phase out nudges in favor of a average-based pass
 class Nudge(models.Model):
     user = models.ForeignKey('auth.User')
     track = models.ForeignKey('track.Track')
