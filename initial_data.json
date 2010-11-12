@@ -1,0 +1,24 @@
+[
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "username": "dev",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2010-11-12 21:41:22",
+            "groups": [
+                
+            ],
+            "user_permissions": [
+                
+            ],
+            "password": "sha1$55d99$1483e6dde52c77be578599526aacf5081ebd21d4",
+            "email": "admin@gamemasterradio.com",
+            "date_joined": "2010-11-12 21:41:22" 
+        } 
+    }
+]
