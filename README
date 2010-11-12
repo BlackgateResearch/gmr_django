@@ -1,0 +1,2 @@
+sudo apt-get install python-django (1.1)
+sudo easy_install Werkzeug
