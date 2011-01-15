@@ -1,24 +1,40 @@
 from django.db import models
 
 class Track(models.Model):
-    artist = models.ForeignKey('artist.Artist')
-    name = models.CharField(max_length = 50)
+    artist =      models.ForeignKey('artist.Artist')
+    name =        models.CharField(max_length = 50)
     description = models.TextField()
-    mp3 = models.FileField(upload_to="track/")
-#   PASS
+    mp3 =         models.FileField(upload_to="track/")
+    
+    def __unicode__(self):
+        return unicode(self.artist) + u' - ' + self.name
+
+
+class Track_vote(models.Model):
+    track =     models.ForeignKey('track.Track')
+    user =      models.ForeignKey('auth.User')
+    vote_time = models.TimeField()
+    
+
+class Track_pass(models.Model):
+    track =      models.ForeignKey('track.Track')
     positivity = models.IntegerField()
     aggression = models.IntegerField()
-    speed = models.IntegerField()
-    suspense = models.IntegerField()
+    speed =      models.IntegerField()
+    suspense =   models.IntegerField()
+    votes =      models.IntegerField()
+    
+    class Meta:
+        verbose_name_plural = "Track Passes"
 
 
 class Preset(models.Model):
-    name = models.CharField(max_length = 50)
+    name =       models.CharField(max_length = 50)
     positivity = models.IntegerField()
     aggression = models.IntegerField()
-    speed = models.IntegerField()
-    suspense = models.IntegerField()
-    user = models.ForeignKey('auth.User')
+    speed =      models.IntegerField()
+    suspense =   models.IntegerField()
+    user =       models.ForeignKey('auth.User')
 
 
 class Playlist(models.Model):
@@ -26,27 +42,20 @@ class Playlist(models.Model):
     user = models.ForeignKey('auth.User')
 
 
+
 class PlaylistTrack(models.Model):
     playlist = models.ForeignKey('track.Playlist')
-    track = models.ForeignKey('track.Track')
+    track =    models.ForeignKey('track.Track')
     position = models.IntegerField()
-
-
-#TODO: We'll phase out nudges in favor of a average-based pass
-class Nudge(models.Model):
-    user = models.ForeignKey('auth.User')
-    track = models.ForeignKey('track.Track')
-    nudge_time = models.TimeField()
-    pass_attribute = models.IntegerField()
-    nudged_up = models.BooleanField()
-    
+  
     
 class Play(models.Model):
-    user = models.ForeignKey('auth.User')
-    track = models.ForeignKey('track.Track')
+    user =        models.ForeignKey('auth.User')
+    track =       models.ForeignKey('track.Track')
     played_time = models.DateTimeField()
     
+    
 class PlayToEnd(models.Model):
-    user = models.ForeignKey('auth.User')
-    track = models.ForeignKey('track.Track')
+    user =          models.ForeignKey('auth.User')
+    track =         models.ForeignKey('track.Track')
     finished_time = models.DateTimeField()
