@@ -22,3 +22,19 @@ urlpatterns = patterns('',
     {'document_root': settings.MEDIA_ROOT}),
 
 )
+
+'''
+URL                 Verb         Return value
+/track/id           GET          track.json
+
+/playlist/list      GET          array of playlists
+/playlist/id        GET          playlist.json
+/playlist/          PUSH         playlist.json
+/playlist/id        DELETE       200 OK
+/playlist/id        UPDATE       playlist.json
+
+[presets: as playlists]
+
+/playlist/current/  GET         playlist.json
+/playlist/current/  PUSH        playlist.json
+'''
