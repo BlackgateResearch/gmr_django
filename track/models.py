@@ -1,4 +1,5 @@
 from django.db import models
+import settings
 
 class Track(models.Model):
     artist =      models.ForeignKey('artist.Artist')
