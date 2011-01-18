@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     {'document_root': settings.MEDIA_ROOT}),
 
     (r'^radio/', include('radio.urls')),
+    (r'^track/', include('track.urls')),
 )
 
 '''
