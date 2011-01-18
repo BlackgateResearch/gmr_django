@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
     {'document_root': settings.MEDIA_ROOT}),
 
+    (r'^radio/', include('radio.urls')),
 )
 
 '''
