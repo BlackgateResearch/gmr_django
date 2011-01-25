@@ -20,5 +20,28 @@
             "email": "admin@gamemasterradio.com",
             "date_joined": "2010-11-12 21:41:22" 
         } 
+    },
+
+   {
+        "pk": 1,
+        "model": "track.track",
+        "fields": {
+            "description": "I love that show.",
+            "ogg": "track/itcrowd_1.ogg",
+            "mp3": "track/itcrowd_1.mp3",
+            "name": "IT Crowd Theme",
+            "artist": 1 
+        }
+    },
+
+    {
+        "pk": 1,
+        "model": "artist.artist",
+        "fields": {
+            "picture": "artist/pictures/headshot-crossedarms2-web-medium_1.png",
+            "description": "Namtao is an artist.",
+            "user": 1,
+            "name": "Namtao" 
+        }
     }
 ]

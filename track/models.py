@@ -6,6 +6,7 @@ class Track(models.Model):
     name =        models.CharField(max_length = 50)
     description = models.TextField()
     mp3 =         models.FileField(upload_to="track/")
+    ogg =         models.FileField(upload_to="track/")
     
     def __unicode__(self):
         return unicode(self.artist) + u' - ' + self.name
