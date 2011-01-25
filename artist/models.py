@@ -7,4 +7,4 @@ class Artist(models.Model):
     picture =     models.ImageField(upload_to="artist/pictures")
 
     def __unicode__(self):
-        return self.name
+        return unicode(self.name)
