@@ -38,18 +38,25 @@ class Preset(models.Model):
     suspense =   models.IntegerField()
     user =       models.ForeignKey('auth.User')
 
+    def __unicode__(self):
+        return unicode(self.name)
+
 
 class Playlist(models.Model):
     name = models.CharField(max_length = 50)
     user = models.ForeignKey('auth.User')
 
+    def __unicode__(self):
+        return self.name
 
 
 class PlaylistTrack(models.Model):
     playlist = models.ForeignKey('track.Playlist')
     track =    models.ForeignKey('track.Track')
     position = models.IntegerField()
-  
+
+    def __unicode__(self):
+        return unicode(self.playlist) + ': ' + unicode(self.track)
     
 class Play(models.Model):
     user =        models.ForeignKey('auth.User')

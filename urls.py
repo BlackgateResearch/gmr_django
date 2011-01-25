@@ -23,6 +23,8 @@ urlpatterns = patterns('',
 
     (r'^radio/', include('radio.urls')),
     (r'^track/', include('track.urls')),
+    
+    (r'^playlist/(?P<playlist_id>\d+)/$', 'track.views.playlist_get'),
 )
 
 '''
