@@ -1,6 +1,6 @@
 # Create your views here.
 from django.core import serializers
-from track.models import Track, PlaylistTrack
+from track.models import Track, Playlist
 from django.http import HttpResponse
 import settings 
 
@@ -55,7 +55,6 @@ def playlist_get(request, playlist_id):
         }
     ]
     '''
-    
-    playlist = Track.objects.filter(playlisttrack__playlist__exact=playlist_id)
+    playlist = Playlist.objects.get(pk=playlist_id).tracks.all()
     playlist_json = serializers.serialize("json", playlist)
     return HttpResponse(playlist_json, content_type='application/json')

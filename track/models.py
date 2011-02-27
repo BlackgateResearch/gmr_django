@@ -41,22 +41,25 @@ class Preset(models.Model):
     def __unicode__(self):
         return unicode(self.name)
 
-
 class Playlist(models.Model):
     name = models.CharField(max_length = 50)
-    user = models.ForeignKey('auth.User')
-
+    tracks = models.ManyToManyField('Track', through='PlaylistTrack')
+    
     def __unicode__(self):
         return self.name
-
-
+        
+        
 class PlaylistTrack(models.Model):
     playlist = models.ForeignKey('track.Playlist')
     track =    models.ForeignKey('track.Track')
-    position = models.IntegerField()
+    position = models.IntegerField() #Here's the crux of the problem
 
     def __unicode__(self):
         return unicode(self.playlist) + ': ' + unicode(self.track)
+        
+    class Meta:
+        ordering = ['position']
+    
     
 class Play(models.Model):
     user =        models.ForeignKey('auth.User')
