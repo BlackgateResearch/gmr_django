@@ -1,3 +1,6 @@
+# Game Master Radio
+
+# Requirements:
 sudo apt-get install python-django #(1.1)
 sudo easy_install Werkzeug
-easy_install -Z django-admin-tools
+sudo easy_install -Z django-admin-tools
