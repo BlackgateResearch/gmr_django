@@ -2,5 +2,8 @@
 
 # Requirements:
 sudo apt-get install python-django #(1.1)
+sudo apt-get install python-setuptools
 sudo easy_install Werkzeug
 sudo easy_install -Z django-admin-tools
+
+# "sudo sh README" to install
