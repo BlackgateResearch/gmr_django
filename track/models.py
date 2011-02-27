@@ -43,6 +43,7 @@ class Preset(models.Model):
 
 class Playlist(models.Model):
     name =   models.CharField(max_length = 50)
+    user =   models.ForeignKey('auth.User')
     tracks = models.ManyToManyField('Track', through='PlaylistTrack')
     
     def __unicode__(self):
