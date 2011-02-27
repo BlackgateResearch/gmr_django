@@ -26,16 +26,24 @@ gmr.player = function() {
       $('<source>').attr('src', path).appendTo(gmr.player.audio);
     },
     
-    //Append the <audio> tag to the DOM
-    outputTag : function() {
-      gmr.player.audio.appendTo('body');
-    },
-    
     //Sets the callback for the onended event
     assignEndCallback : function(reference) {
       gmr.player.endCallback = reference;
       $(gmr.player.audio).bind('ended', gmr.player.endCallback());
     },
+    
+    play : function() {
+      gmr.player.audio[0].play();
+    },
+    
+    pause : function() {
+      gmr.player.audio[0].pause(); 
+    },
+   
+    stop : function() {
+      gmr.player.audio[0].pause();
+      gmr.player.audio[0].currentTime = 0;
+    }
     
     //TODO: Find some way to handle "onended"
     

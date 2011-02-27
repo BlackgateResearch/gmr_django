@@ -33,7 +33,13 @@
       <p><a href="/">Home</a></p>
       <p><a href="/contact">Contact</a></p>
     </nav>
-
+    <div>
+      <button onclick="gmr.radio.player.play()">Play</button>
+      <button onclick="gmr.radio.player.pause()">Pause</button>
+      <button onclick="gmr.radio.player.stop()">Stop</button>
+      <button onclick="gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.ogg');
+gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.mp3');">Add Media</button>
+    </div>
     <footer>
      <p>&copy; Copyright 2011 Blackgate Research</p>
     </footer>
