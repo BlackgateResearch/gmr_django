@@ -5,6 +5,7 @@ from django.http import HttpResponse
 import settings 
 from collections import namedtuple
 import json
+from django.shortcuts import get_object_or_404
 
 def track_get(request, track_id):
     '''
@@ -54,8 +55,9 @@ def playlist_get(request, playlist_id):
         "name": "first_playlist"
     }
     '''
+    playlist = get_object_or_404(Playlist,pk=playlist_id)
     tracks = Playlist.objects.get(pk=playlist_id).tracks.all()
-    playlist = Playlist.objects.get(pk=playlist_id)
+    
     playlist_tracks = []
     
     for track in tracks:
