@@ -1,7 +1,6 @@
 # Django settings for gmr_django project.
 import os
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TEMPLATE_DIRS = (
@@ -9,7 +8,7 @@ TEMPLATE_DIRS = (
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
 )
-import os
+
 gmr_template = os.path.dirname( __file__ ) + '/templates' 
 TEMPLATE_DIRS = gmr_template
 
@@ -100,7 +99,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'gmr_django.urls'
 
-import os
 gmr_template = os.path.dirname( __file__ ) + '/templates' 
 TEMPLATE_DIRS = (gmr_template)
 
@@ -108,6 +106,7 @@ TEMPLATE_DIRS = (gmr_template)
 gmr_doc_root = os.path.dirname( __file__ ) + '/site_media'
 STATIC_DOC_ROOT = gmr_doc_root
 
+ADMIN_TOOLS_THEMING_CSS = 'admin_tools/css/theming.css'
 
 INSTALLED_APPS = (
     'admin_tools',

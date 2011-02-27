@@ -42,7 +42,7 @@ class Preset(models.Model):
         return unicode(self.name)
 
 class Playlist(models.Model):
-    name = models.CharField(max_length = 50)
+    name =   models.CharField(max_length = 50)
     tracks = models.ManyToManyField('Track', through='PlaylistTrack')
     
     def __unicode__(self):
@@ -52,7 +52,7 @@ class Playlist(models.Model):
 class PlaylistTrack(models.Model):
     playlist = models.ForeignKey('track.Playlist')
     track =    models.ForeignKey('track.Track')
-    position = models.IntegerField() #Here's the crux of the problem
+    position = models.IntegerField()
 
     def __unicode__(self):
         return unicode(self.playlist) + ': ' + unicode(self.track)

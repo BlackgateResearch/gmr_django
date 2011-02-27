@@ -4,15 +4,14 @@
  */
 
 #header {
-    //background: url(../images/admin-tools.png) 0 0 repeat-x;
-    background-color: black;
+    background: url(../images/admin-tools.png) 0 0 repeat-x;
 }
 
 #header #branding h1 {
     margin: 0;
     padding: 5px 10px;
     text-indent: -9999px;
-    background: transparent url(../images/gmr32.png) 10px 5px no-repeat;
+    background: transparent url(../images/django.png) 10px 5px no-repeat;
     height: 31px;
     width: 93px;
 }
