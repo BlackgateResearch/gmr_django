@@ -22,12 +22,12 @@ URL                 Verb         Return value
 
 /playlist/list      GET          array of playlists
 /playlist/id        GET          playlist.json
-/playlist/          PUSH         playlist.json
+/playlist/          POST         playlist.json
 /playlist/id        DELETE       200 OK
 /playlist/id        UPDATE       playlist.json
 
 [presets: as playlists]
 
 /playlist/current/  GET         playlist.json
-/playlist/current/  PUSH        playlist.json
+/playlist/current/  POST        playlist.json
 '''

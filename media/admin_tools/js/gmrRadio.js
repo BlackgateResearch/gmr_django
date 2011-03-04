@@ -41,6 +41,8 @@ gmr.radio = function() {
 }();
 
 gmr.radio.assignPlayerCallback();
-
-console.log(gmr.radio.player.audio)
+gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.ogg');
+gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.mp3');
+gmr.radio.player.outputTag();
+console.log(gmr)
 
