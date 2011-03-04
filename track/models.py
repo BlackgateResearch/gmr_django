@@ -1,5 +1,4 @@
 from django.db import models
-import settings
 
 class Track(models.Model):
     artist =      models.ForeignKey('artist.Artist')
@@ -7,6 +6,7 @@ class Track(models.Model):
     description = models.TextField()
     mp3 =         models.FileField(upload_to="track/")
     ogg =         models.FileField(upload_to="track/")
+    published =   models.BooleanField()
     
     def __unicode__(self):
         return unicode(self.artist) + u' - ' + self.name
