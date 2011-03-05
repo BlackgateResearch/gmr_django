@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin_tools/', include('admin_tools.urls')),
+    (r'^admin_tools/', include('admin_tools.urls')),
     #(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
     
@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     (r'^radio/', include('radio.urls')),
     (r'^track/', include('track.urls')),
     (r'^playlist/(?P<playlist_id>\d+)/$', 'track.views.playlist_get'),
+    (r'^playlist/list/', 'track.views.playlist_list'),
 )
 
 '''

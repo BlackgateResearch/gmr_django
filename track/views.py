@@ -77,6 +77,8 @@ def playlist_get(request, playlist_id):
     
     return HttpResponse(playlist_json, content_type='application/json')
     
-PlaylistWrapper = namedtuple('PlaylistWrapper', 'playlist tracks')
 
+def playlist_list(request):
+    playlists = serializers.serialize("json", Playlist.objects.filter(user=request.user))
     
+    return HttpResponse(playlists, content_type='application/json')
