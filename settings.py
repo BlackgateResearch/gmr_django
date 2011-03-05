@@ -1,41 +1,25 @@
-# Django settings for gmr_django project.
 import os
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-TEMPLATE_DIRS = (
-# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-# Always use forward slashes, even on Windows.
-# Don't forget to use absolute paths, not relative paths.
-)
 
-gmr_template = os.path.dirname( __file__ ) + '/templates' 
-TEMPLATE_DIRS = gmr_template
+path = os.path.dirname( __file__ )
+TEMPLATE_DIRS = path + '/templates' 
+MEDIA_ROOT = path + '/media'
+MEDIA_URL = '/site_media/'
 
 ADMINS = (
-    # ('Tristram Oaten', 'tristram@oaten.name'),
-    # ('Karl Williams', 'karl@deadlight.net'),
+    ('Tristram Oaten', 'tris@blackgateresearch.com'),
+    ('Karl Williams',  'karl@blackgateresearch.com'),
 )
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'gmr.db'             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = 'gmr.db'
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
 TIME_ZONE = 'Europe/London'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-uk'
+USE_I18N = False
 
 INTERNAL_IPS = ('127.0.0.1',)
 
@@ -45,25 +29,7 @@ DEBUG_TOOLBAR_CONFIG = {
 
 SITE_ID = 1
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
-USE_I18N = False
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-
-media_root = os.path.dirname( __file__ ) + '/media'
-MEDIA_ROOT = media_root
-
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/site_media/'
-
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
@@ -103,8 +69,8 @@ gmr_template = os.path.dirname( __file__ ) + '/templates'
 TEMPLATE_DIRS = (gmr_template)
 
 #unused?
-gmr_doc_root = os.path.dirname( __file__ ) + '/site_media'
-STATIC_DOC_ROOT = gmr_doc_root
+#gmr_doc_root = os.path.dirname( __file__ ) + '/site_media'
+#STATIC_DOC_ROOT = gmr_doc_root
 
 ADMIN_TOOLS_THEMING_CSS = 'admin_tools/css/theming.css'
 
