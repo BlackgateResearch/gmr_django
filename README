@@ -1,6 +1,29 @@
-# Game Master Radio
+: '
+GMR release <http://www.gamemasterradio.com>
 
-# Requirements:
+  These are the release notes for GMR.
+  read them carefully, as they tell you what this is all about.
+
+AUTHORS
+
+  Tristram Oaten <tristram@oaten.name>
+  Karl Williams <karl@deadlight.net>
+
+WHAT IS GMR?
+  
+  GMR (Gmr Music Radio) is the framework powering GameMasterRadio.com,
+  a tabletop-gaming-themed radio which the mood of the music can be changed
+  to what is happening in the game.
+
+DOCUMENTATION
+  
+  The wiki is avalable at <http://wiki.github.com/oatman/gmr> this may contain
+  more up-do-date information than this file.
+
+WHAT ENVIRONMENT DOES IT REQUIRE?
+
+  GMR runs on Django 1.2 with the following requirements:
+'
 apt-get install python-django #(1.1)
 apt-get install python-setuptools
 easy_install Werkzeug
