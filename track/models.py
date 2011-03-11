@@ -34,11 +34,11 @@ class Track_pass(models.Model):
     That way, you can get the exact mean by dividing one by the other.
     '''
     track =      models.ForeignKey('track.Track')
-    positivity = models.IntegerField()
-    aggression = models.IntegerField()
-    speed =      models.IntegerField()
-    suspense =   models.IntegerField()
-    votes =      models.IntegerField()
+    positivity = models.IntegerField(choices=[(x,x) for x in range(10)])
+    aggression = models.IntegerField(choices=[(x,x) for x in range(10)])
+    speed =      models.IntegerField(choices=[(x,x) for x in range(10)])
+    suspense =   models.IntegerField(choices=[(x,x) for x in range(10)])
+    votes =      models.IntegerField(choices=[(x,x) for x in range(10)])
     
     class Meta:
         verbose_name_plural = "Track Passes"
@@ -49,10 +49,10 @@ class Preset(models.Model):
     A user's PASS preset, named.
     '''
     name =       models.CharField(max_length = 50)
-    positivity = models.IntegerField()
-    aggression = models.IntegerField()
-    speed =      models.IntegerField()
-    suspense =   models.IntegerField()
+    positivity = models.IntegerField(choices=[(x,x) for x in range(10)])
+    aggression = models.IntegerField(choices=[(x,x) for x in range(10)])
+    speed =      models.IntegerField(choices=[(x,x) for x in range(10)])
+    suspense =   models.IntegerField(choices=[(x,x) for x in range(10)])
     user =       models.ForeignKey('auth.User')
 
     def __unicode__(self):

@@ -74,6 +74,9 @@ TEMPLATE_DIRS = (gmr_template)
 
 ADMIN_TOOLS_THEMING_CSS = 'admin_tools/css/theming.css'
 
+ADMIN_TOOLS_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+#ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'gmr_django.dashboard.CustomAppIndexDashboard'
+
 INSTALLED_APPS = (
     'admin_tools',
     'admin_tools.theming',

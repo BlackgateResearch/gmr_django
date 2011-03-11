@@ -1,6 +1,6 @@
 # Create your views here.
 from django.core import serializers
-from track.models import Track, Playlist
+from track.models import Track, Playlist, Preset
 from django.http import HttpResponse
 import settings 
 from collections import namedtuple
@@ -29,7 +29,6 @@ def track_get(request, track_id):
     #return HttpResponse(track_json, content_type='application/json')
     
     #unimplemented for now
-    
     response = HttpResponse()
     response.status_code=501
     return response
@@ -82,3 +81,38 @@ def playlist_list(request):
     playlists = serializers.serialize("json", Playlist.objects.filter(user=request.user))
     
     return HttpResponse(playlists, content_type='application/json')
+
+
+def preset_list(request):
+    playlists = serializers.serialize("json", Preset.objects.filter(user=request.user))
+    
+    return HttpResponse(playlists, content_type='application/json')
+
+
+def preset_get(request, preset_id):
+    '''
+    Provides the GET verb for /preset/id
+    Returns a json playlist object in format:
+    
+    {
+        "tracks": [
+            {
+                "description": "I love that show.",
+                "artist": "Namtao",
+                "ogg": "track/itcrowd.ogg",
+                "mp3": "track/itcrowd.mp3",
+                "artist_id": 1,
+                "id": 1,
+                "name": "IT Crowd Theme" 
+            } 
+        ],
+        "id": 1,
+        "name": "first_playlist"
+    }
+    '''
+    preset = get_object_or_404(Preset,pk=preset_id)
+
+    
+    preset_json = json.dumps(preset)
+    
+    return HttpResponse(preset_json, content_type='application/json')

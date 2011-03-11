@@ -12,19 +12,28 @@ urlpatterns = patterns('',
     {'document_root': settings.MEDIA_ROOT}),
 
     (r'^radio/', include('radio.urls')),
-    (r'^track/', include('track.urls')),
-    (r'^playlist/(?P<playlist_id>\d+)/$', 'track.views.playlist_get'),
+    #(r'^track/', include('track.urls')),
+
+    #playlists
     (r'^playlist/list/', 'track.views.playlist_list'),
+    (r'^playlist/(?P<playlist_id>\d+)/$', 'track.views.playlist_get'),
+
+    #presets
+    (r'^preset/list/', 'track.views.preset_list'),
+    (r'^preset/(?P<preset_id>\d+)/$', 'track.views.preset_get'),
 )
 
 '''
+Use Piston
+https://bitbucket.org/jespern/django-piston/wiki/Home
+
 URL                 Verb         Return value
 /track/id           GET          track.json
 
 /playlist/list      GET          array of playlists
 /playlist/id        GET          playlist.json
 /playlist/          POST         playlist.json
-/playlist/id        DELETE       200 OK
+/playlist/id        POST       200 OK
 /playlist/id        UPDATE       playlist.json
 
 [presets: as playlists]
