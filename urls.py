@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     #playlists
     (r'^playlist/list/', 'track.views.playlist_list'),
     (r'^playlist/(?P<playlist_id>\d+)/$', 'track.views.playlist_get'),
+    (r'^playlist/generate/$', 'track.views.playlist_generate'),
 
     #presets
     (r'^preset/list/', 'track.views.preset_list'),
@@ -27,17 +28,18 @@ urlpatterns = patterns('',
 Use Piston
 https://bitbucket.org/jespern/django-piston/wiki/Home
 
-URL                 Verb         Return value
-/track/id           GET          track.json
+URL                       Verb         Return value
+/track/id                  GET          track.json
 
-/playlist/list      GET          array of playlists
-/playlist/id        GET          playlist.json
-/playlist/          POST         playlist.json
-/playlist/id        POST       200 OK
-/playlist/id        UPDATE       playlist.json
+/playlist/list             GET          array of playlists
+/playlist/id               GET          playlist.json
+/playlist/                 POST         playlist.json
+/playlist/id               POST         200 OK
+/playlist/id               UPDATE       playlist.json
+/playlist/generate/[vars]] GET
 
 [presets: as playlists]
 
-/playlist/current/  GET         playlist.json
-/playlist/current/  POST        playlist.json
+/playlist/current/         GET         playlist.json
+/playlist/current/         POST        playlist.json
 '''

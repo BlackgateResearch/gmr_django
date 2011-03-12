@@ -57,22 +57,7 @@ def playlist_get(request, playlist_id):
     playlist = get_object_or_404(Playlist,pk=playlist_id)
     tracks = Playlist.objects.get(pk=playlist_id).tracks.all()
     
-    playlist_tracks = []
-    
-    for track in tracks:
-        track_dict = track.__dict__
-        track_dict["artist"] = str(track.artist)
-        del track_dict["_state"]
-        del track_dict["_artist_cache"]
-        playlist_tracks.append(track_dict)
-    
-    playlist_dict = {
-        "id":     playlist.id,
-        "name":   playlist.name,
-        "tracks": playlist_tracks
-    }
-    
-    playlist_json = json.dumps(playlist_dict)
+    playlist_json = tracks_to_json_playlist(tracks, playlist)
     
     return HttpResponse(playlist_json, content_type='application/json')
     
@@ -110,9 +95,53 @@ def preset_get(request, preset_id):
         "name": "first_playlist"
     }
     '''
-    preset = get_object_or_404(Preset,pk=preset_id)
-
-    
-    preset_json = json.dumps(preset)
+    preset = Preset.objects.filter(id=preset_id)
+    preset_json = serializers.serialize("json", preset)
     
     return HttpResponse(preset_json, content_type='application/json')
+
+
+def tracks_to_json_playlist(tracks, playlist=None):
+    '''
+    Takes a queryset of tracks and returns a json playlist
+    '''
+    playlist_tracks = []
+    
+    for track in tracks:
+        track_dict = track.__dict__
+        track_dict["artist"] = str(track.artist)
+        del track_dict["_state"]
+        del track_dict["_artist_cache"]
+        playlist_tracks.append(track_dict)
+    
+    if playlist:
+        playlist_dict = {
+            "id":     playlist.id,
+            "name":   playlist.name,
+            "tracks": playlist_tracks
+        }
+    else:
+        playlist_dict = {
+            "id":     -1,
+            "name":   "new",
+            "tracks": playlist_tracks
+        }
+    
+    playlist_json = json.dumps(playlist_dict)
+    return playlist_json
+
+def playlist_generate(request):
+    '''
+    Provides the GET verb for /playlist/generate/ with
+     - posativity
+     - aggression
+     - speed
+     - suspense
+    arguements
+    '''
+    tracks = Track.objects.all()
+    playlist_json = tracks_to_json_playlist(tracks)
+    
+    #TODO: pass filtering
+    
+    return HttpResponse(playlist_json, content_type='application/json')
