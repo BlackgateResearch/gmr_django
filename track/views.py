@@ -105,6 +105,9 @@ def tracks_to_json_playlist(tracks, playlist=None):
     '''
     Takes a queryset of tracks and returns a json playlist
     '''
+    #Restrict tracks to published tracks
+    tracks = tracks.filter(published=True)
+    
     playlist_tracks = []
     
     for track in tracks:
