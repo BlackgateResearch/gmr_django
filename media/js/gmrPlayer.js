@@ -7,8 +7,8 @@
 
 gmr.player = function() {
   //private
-    
- 
+   
+
   return {
     //public
     
@@ -46,7 +46,6 @@ gmr.player = function() {
     }
     
     //TODO: Find some way to handle "onended"
-    
-   
+       
   }
 }();
