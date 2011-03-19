@@ -15,7 +15,7 @@ class Track(models.Model):
         return unicode(self.artist) + u' - ' + self.name
 
 
-class Track_vote(models.Model):
+class TrackVote(models.Model):
     '''
     Ensures a user can only vote on a track once.
     TODO: wipe this once a week? Maybe use a bool
@@ -25,7 +25,7 @@ class Track_vote(models.Model):
     vote_time = models.TimeField()
     
 
-class Track_pass(models.Model):
+class TrackPass(models.Model):
     '''
     TODO: Does oli-charlesworth's solution work?
     http://stackoverflow.com/questions/4642524/maths-approximating-the-mean-without-storing-the-whole-data-set
@@ -38,7 +38,7 @@ class Track_pass(models.Model):
     aggression = models.IntegerField(choices=[(x,x) for x in range(10)])
     speed =      models.IntegerField(choices=[(x,x) for x in range(10)])
     suspense =   models.IntegerField(choices=[(x,x) for x in range(10)])
-    votes =      models.IntegerField(choices=[(x,x) for x in range(10)])
+    votes =      models.IntegerField()
     
     class Meta:
         verbose_name_plural = "Track Passes"

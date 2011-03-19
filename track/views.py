@@ -1,6 +1,6 @@
 # Create your views here.
 from django.core import serializers
-from track.models import Track, Playlist, Preset
+from track.models import Track, Playlist, Preset, TrackPass
 from django.http import HttpResponse
 import settings 
 from collections import namedtuple
@@ -106,7 +106,7 @@ def tracks_to_json_playlist(tracks, playlist=None):
     Takes a queryset of tracks and returns a json playlist
     '''
     #Restrict tracks to published tracks
-    tracks = tracks.filter(published=True)
+    #tracks = tracks.filter(published=True)
     
     playlist_tracks = []
     
@@ -142,9 +142,57 @@ def playlist_generate(request):
      - suspense
     arguements
     '''
-    tracks = Track.objects.all()
+    p = request.get("positivity", 1)
+    a = request.get("aggression", 1)
+    sp = request.get("speed", 1)
+    su = request.get("suspense", 1)
+    
+    genreDict = {}
+    playlist = TrackPass.objects.all()
+    
+    #Add all tracks to a dictionary with the track as the key deviation as value
+    count = float(0) #FLOAT'd'd!!!
+    for track in playlist:
+        count = count + 1
+        deviation = int(getDeviation(p,a,sp,su,track))
+        try:
+            genreDict[deviation]
+            genreDict[deviation + count/100] = track
+        except KeyError:
+            genreDict[deviation] = track
+    sorted_track_passes = sortTracks(genreDict)
+    
+    tracks = []
+    for trackpass in sorted_track_passes:
+        try:
+            tracks.append(Track.objects.get(pk=trackpass.track.id,published=True))
+        except:
+            pass #drop non-published tracks
+    
     playlist_json = tracks_to_json_playlist(tracks)
-    
-    #TODO: pass filtering
-    
     return HttpResponse(playlist_json, content_type='application/json')
+
+def getDeviation(positivity,aggression,speed,suspense,track):
+    """
+    Compare the searched-for parameters with a track,
+    return the deviation from the track
+    TODO: use the sum of the squares
+    """
+    deviationSpeed = int(positivity) - int(track.positivity)
+    deviationCombat = int(aggression) - int(track.aggression)
+    deviationSuspense = int(speed) - int(track.speed)
+    deviationPositive = int(suspense) - int(track.suspense)
+
+    deviation = abs(deviationSpeed) \
+        + abs(deviationCombat) \
+        + abs(deviationSuspense) \
+        + abs(deviationPositive)
+
+    return deviation
+
+def sortTracks(genreDict):
+    """
+    Takes a dictionary of deviation:track, sorts it by deviation,
+    and returns the ordered list of tracks
+    """
+    return [genreDict[key] for key in sorted(genreDict.keys())]
