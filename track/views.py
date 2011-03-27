@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def track_get(request, track_id):
     '''
@@ -36,6 +37,8 @@ def track_get(request, track_id):
     response.status_code=501
     return response
 
+
+@login_required
 def playlist_get(request, playlist_id):
     '''
     Provides the GET verb for /playlist/id
@@ -65,18 +68,21 @@ def playlist_get(request, playlist_id):
     return HttpResponse(playlist_json, content_type='application/json')
     
 
+@login_required
 def playlist_list(request):
     playlists = serializers.serialize("json", Playlist.objects.filter(user=request.user))
     
     return HttpResponse(playlists, content_type='application/json')
 
 
+@login_required
 def preset_list(request):
     playlists = serializers.serialize("json", Preset.objects.filter(user=request.user))
     
     return HttpResponse(playlists, content_type='application/json')
 
 
+@login_required
 def preset_get(request, preset_id):
     '''
     Provides the GET verb for /preset/id
@@ -135,6 +141,7 @@ def tracks_to_json_playlist(tracks, playlist=None):
     
     playlist_json = json.dumps(playlist_dict)
     return playlist_json
+
 
 @login_required
 def playlist_generate(request):

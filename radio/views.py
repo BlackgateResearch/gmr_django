@@ -5,12 +5,14 @@ from django.contrib.auth.models import User
 
 def index(request):
     '''
+    TODO: Replace with generic view?
     '''
     return render_to_response('index.html')
 
 
 def register(request):
     '''
+    Provides the registration functionality to signup users.s
     '''
     if request.method == 'POST':
         form = EmailUserCreationForm(request.POST)
