@@ -12,7 +12,7 @@ def index(request):
 
 def register(request):
     '''
-    Provides the registration functionality to signup users.s
+    Provides the registration functionality to signup users.
     '''
     if request.method == 'POST':
         form = EmailUserCreationForm(request.POST)

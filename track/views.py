@@ -42,23 +42,10 @@ def track_get(request, track_id):
 def playlist_get(request, playlist_id):
     '''
     Provides the GET verb for /playlist/id
-    Returns a json playlist object in format:
+    Returns a json playlist object.
     
-    {
-        "tracks": [
-            {
-                "description": "I love that show.",
-                "artist": "Namtao",
-                "ogg": "track/itcrowd.ogg",
-                "mp3": "track/itcrowd.mp3",
-                "artist_id": 1,
-                "id": 1,
-                "name": "IT Crowd Theme" 
-            } 
-        ],
-        "id": 1,
-        "name": "first_playlist"
-    }
+  - playlist.name
+  - playlist.track -- JSON array of tracks
     '''
     playlist = get_object_or_404(Playlist,pk=playlist_id)
     tracks = Playlist.objects.get(pk=playlist_id).tracks.all()
@@ -70,6 +57,9 @@ def playlist_get(request, playlist_id):
 
 @login_required
 def playlist_list(request):
+    '''
+    Returns a JSON array of all playlists associated with the logged-in user
+    '''
     playlists = serializers.serialize("json", Playlist.objects.filter(user=request.user))
     
     return HttpResponse(playlists, content_type='application/json')
@@ -77,6 +67,9 @@ def playlist_list(request):
 
 @login_required
 def preset_list(request):
+    '''
+    Returns a JSON array of all presets associated with the logged-in user
+    '''
     playlists = serializers.serialize("json", Preset.objects.filter(user=request.user))
     
     return HttpResponse(playlists, content_type='application/json')
@@ -86,23 +79,10 @@ def preset_list(request):
 def preset_get(request, preset_id):
     '''
     Provides the GET verb for /preset/id
-    Returns a json playlist object in format:
+    Returns a json playlist object.
     
-    {
-        "tracks": [
-            {
-                "description": "I love that show.",
-                "artist": "Namtao",
-                "ogg": "track/itcrowd.ogg",
-                "mp3": "track/itcrowd.mp3",
-                "artist_id": 1,
-                "id": 1,
-                "name": "IT Crowd Theme" 
-            } 
-        ],
-        "id": 1,
-        "name": "first_playlist"
-    }
+  - playlist.name
+  - playlist.track -- JSON array of tracks
     '''
     preset = Preset.objects.filter(id=preset_id)
     preset_json = serializers.serialize("json", preset)
@@ -146,7 +126,7 @@ def tracks_to_json_playlist(tracks, playlist=None):
 @login_required
 def playlist_generate(request):
     '''
-    Provides the GET verb for /playlist/generate/ with
+    Provides the GET verb for /playlist/generate/ to generate a pass playlist with
      - posativity
      - aggression
      - speed
