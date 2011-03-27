@@ -7,6 +7,9 @@ from collections import namedtuple
 import json
 from django.shortcuts import get_object_or_404
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def track_get(request, track_id):
     '''
     Provides the GET verb for /track/id
@@ -133,6 +136,7 @@ def tracks_to_json_playlist(tracks, playlist=None):
     playlist_json = json.dumps(playlist_dict)
     return playlist_json
 
+@login_required
 def playlist_generate(request):
     '''
     Provides the GET verb for /playlist/generate/ with
