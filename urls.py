@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
     {'document_root': settings.MEDIA_ROOT}),
+    
+    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
 
     (r'^radio/', include('radio.urls')),
     #(r'^track/', include('track.urls')),
