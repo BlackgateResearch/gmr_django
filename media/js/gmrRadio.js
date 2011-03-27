@@ -13,6 +13,7 @@ gmr.radio = function() {
     //public
     playlist : '',
     player : gmr.player,
+    currentTrack : 0,
 
     loadPlaylist : function() {
       $.ajax({
@@ -23,6 +24,7 @@ gmr.radio = function() {
           console.log(gmr.radio.playlist);
         }
       });
+      gmr.radio.currentTrack = 0;
     },
     
     savePlaylist : function() {
@@ -30,7 +32,12 @@ gmr.radio = function() {
     },
 
     next : function() {
-      
+      if (true) {
+        console.log(gmr.radio.playlist.length);
+        gmr.radio.currentTrack++;
+      } else {
+
+      }
     },
 
     previous : function() {
