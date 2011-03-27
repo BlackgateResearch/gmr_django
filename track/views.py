@@ -140,12 +140,13 @@ def playlist_generate(request):
      - aggression
      - speed
      - suspense
+     
     arguements
     '''
-    p = request.get("positivity", 1)
-    a = request.get("aggression", 1)
-    sp = request.get("speed", 1)
-    su = request.get("suspense", 1)
+    p = request.GET.get("positivity", 4)
+    a = request.GET.get("aggression", 4)
+    sp = request.GET.get("speed", 4)
+    su = request.GET.get("suspense", 4)
     
     genreDict = {}
     playlist = TrackPass.objects.all()
