@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.webdesign',
     'debug_toolbar',
     'django_extensions',
     'gmr_django.artist',
