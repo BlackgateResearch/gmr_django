@@ -23,7 +23,7 @@ gmr.player = function() {
     
     //Add a <source> tag to <audio> tag with the src 'path'
     addSource : function(path) {
-      $('<source>').attr('src', path).appendTo(gmr.player.audio);
+      $('<source>').attr('src', path).appendTo(gmr.radio.player.audio);
     },
     
     //Sets the callback for the onended event
@@ -43,9 +43,6 @@ gmr.player = function() {
     stop : function() {
       gmr.player.audio[0].pause();
       gmr.player.audio[0].currentTime = 0;
-    }
-    
-    //TODO: Find some way to handle "onended"
-       
+    }       
   }
 }();
