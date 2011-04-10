@@ -1,13 +1,15 @@
-# Create your views here.
+import json
+from collections import namedtuple
+
+import settings
 from django.core import serializers
 from track.models import Track, Playlist, Preset, TrackPass
 from django.http import HttpResponse
-import settings 
-from collections import namedtuple
-import json
-from django.shortcuts import get_object_or_404
 
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
+
+from annoying.decorators import ajax_request
 
 
 @login_required

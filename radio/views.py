@@ -1,15 +1,20 @@
-from django.shortcuts import render_to_response, redirect
-from django.http import HttpResponse
+'''
+Radio & Site-based views
+'''
+from django.shortcuts import redirect
 from radio.forms import EmailUserCreationForm
 from django.contrib.auth.models import User
 
+from annoying.decorators import render_to
+
+
+@render_to('index.html')
 def index(request):
-    '''
-    TODO: Replace with generic view?
-    '''
-    return render_to_response('index.html')
+    '''TODO: Replace with generic view?'''
+    return {}
 
 
+@render_to('radio/register.html')
 def register(request):
     '''
     Provides the registration functionality to signup users.
@@ -25,6 +30,4 @@ def register(request):
     else:
         form = EmailUserCreationForm() # An unbound form
 
-    return render_to_response('radio/register.html', {
-        'form': form,
-    })
+    return {'form': form,}
