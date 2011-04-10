@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from annoying.decorators import render_to
 
 
-@render_to('index.html')
+@render_to('radio/index.html')
 def index(request):
     '''TODO: Replace with generic view?'''
     return {}
