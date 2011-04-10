@@ -1,3 +1,5 @@
+{% load webdesign %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +11,7 @@
 
   <title>test</title>
   <meta name="description" content="" />
-  <meta name="generator" content="Studio 3 http://aptana.com/" />
   <meta name="author" content="Blackgate Research" />
-
   <meta name="viewport" content="width=device-width; initial-scale=1.0" />
 
   <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
@@ -22,23 +22,57 @@
   <script type="text/javascript" src="/site_media/js/gmrBase.js"></script>
   <script type="text/javascript" src="/site_media/js/gmrPlayer.js"></script>
   <script type="text/javascript" src="/site_media/js/gmrRadio.js"></script>
-</head>
+   <!-- Framework CSS --> 
+    <link rel="stylesheet" href="/site_media/css/blueprint/screen.css" type="text/css" media="screen, projection"> 
+    <link rel="stylesheet" href="/site_media/css/blueprint/print.css" type="text/css" media="print"> 
+    <!--[if lt IE 8]><link rel="stylesheet" href="/site_media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]--> 
 
-<body>
-  <div>
+    <!-- Import fancy-type plugin for the sample page. --> 
+    <link rel="stylesheet" href="/site_media/css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection"> 
+  </head> 
+  <body> 
+    <div class="container"> 
+    {%block header %}
     <header>
-      <h1>Game Master Radio</h1>
+        <h1>Game Master Radio</h1>
     </header>
+    
+    {%endblock header %}
+    {% block navigation %}
     <nav>
-      <p><a href="/">Home</a></p>
-      <p><a href="/contact">Contact</a></p>
+      <a href="/">Home</a>
+      
+      <a href="/contact">Contact</a>
     </nav>
-    <div>
-    {% block content %}{% endblock %}
-    </div>
-    <footer>
-     <p>&copy; Copyright 2011 Blackgate Research</p>
-    </footer>
-  </div>
-</body>
-</html>
+    {% endblock %}
+      <hr> 
+      <h2 class="alt">message goes here</h2> 
+
+      <div class="span-15 prepend-1 colborder"> 
+          <div>
+            <div>
+            {% block content %}{% endblock %}
+            </div>
+          </div>
+        <hr class="space">
+        <hr>
+        <div class="span-7 colborder"> 
+          <h6>Presets</h6> 
+          {% lorem  40 w%}
+        </div> 
+        <div class="span-7 last"> 
+          <h6>Playlists</h6> 
+          {% lorem  40 w%}
+        </div> 
+      </div> 
+      <div class="span-7 last"> 
+        <h3>PASS</h3> 
+        {% lorem  60 w%}
+      </div> 
+      <hr class="space">
+      <hr> 
+      <h2 class="alt">&copy; Copyright 2011 Blackgate Research</h2> 
+      <hr> 
+    </div> 
+  </body> 
+</html> 

@@ -68,8 +68,8 @@ class Playlist(models.Model):
     
     def __unicode__(self):
         return self.name
-        
-        
+
+
 class PlaylistTrack(models.Model):
     '''
     A linking table between Playlist and Track, identifying if a Track
@@ -77,7 +77,7 @@ class PlaylistTrack(models.Model):
     '''
     playlist = models.ForeignKey('track.Playlist')
     track =    models.ForeignKey('track.Track')
-    position = models.IntegerField()
+    position = models.IntegerField(unique=True)
 
     def __unicode__(self):
         return unicode(self.playlist) + ': ' + unicode(self.track)
