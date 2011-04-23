@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-      <button onclick="gmr.radio.player.play()">Play</button>
-      <button onclick="gmr.radio.player.pause()">Pause</button>
-      <button onclick="gmr.radio.player.stop()">Stop</button>
-      <button onclick="gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.ogg');
+<button onclick="gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.ogg');
 gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.mp3');">Add Media</button>
-      <button onclick="gmr.radio.loadPlaylist(1);">Load Playlist</button>
-      <button onclick="gmr.radio.next()">Next</button>
+<button onclick="gmr.radio.loadPlaylist(1);">Load Playlist</button>
+<button onclick="gmr.radio.updatePlaylist();">Update Playlist</button>
+
+<div class="transport">
+  <button type="button" onclick="gmr.radio.previous()">&lt;&lt;</button>
+  <button type="button" onclick="gmr.radio.player.play()">&gt;</button>
+  <button type="button" onclick="gmr.radio.player.pause()">||</button>
+  <button type="button" onclick="gmr.radio.player.stop()">[]</button>
+  <button type="button" onclick="gmr.radio.next()">&gt;&gt;</button>
+</div>
+
+<ul id="playlist">
+  <li>No Tracks</li>
+</ul>
+
 {% endblock %}
