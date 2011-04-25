@@ -53,7 +53,7 @@ a img {border: 0;}
 	line-height: 36px;
 }
 
-.big, h4 {
+.big, h4, h2, h3 {
 	font-size: 22px;
 	line-height: 30px;
 }
@@ -86,13 +86,51 @@ cols    1     2      3      4      5      6      7      8      9      10
 px      68    160    252    344    436    528    620    712    804    896    */
 
 body {
-	width: 896px;
-	padding: 72px 48px 84px;
-	background: rgb(232,232,232);
-	color: rgb(60,60,60);
-	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+    width: 896px;
+    padding: 20px 48px 84px;
+    background: rgb(232,232,232);
+    color: rgb(60,60,60);
+    -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 }
 
+hr {
+    border: none;
+    border-top: 1px solid rgb(195,195,195);
+    clear: both;
+    margin: 20px 0px;
+}
+
+article {
+    position: relative;
+    border-width: 1px 0 0 0;
+    padding-top: 59px;
+    clear: both;
+    padding-left: 48px;
+    padding-right: 48px;
+    margin: 0 auto;
+    width: 896px;
+}
+
+section {
+    width:550px;
+}
+
+aside {
+	position: absolute;
+	z-index: 800;
+	background: rgb(255,255,158);
+	background: -webkit-gradient(linear, left top, left bottom, 
+		from(rgb(255,255,158)), 
+		color-stop(0.764, rgb(255,255,181))
+	);
+	color: rgb(60,60,37);
+	padding: 36px 50px;
+	-webkit-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
+	   -moz-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
+			box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
+    top: 1; bottom: auto; right: 36px;
+    width: 250px;
+}
 
 
 /*		Tablet Layout: 768px.
@@ -150,36 +188,4 @@ px      68    160    252    344    436    */
 }
 
 
-aside {
-	position: absolute;
-	z-index: 800;
-	background: rgb(255,255,158);
-	background: -webkit-gradient(linear, left top, left bottom, 
-		from(rgb(255,255,158)), 
-		color-stop(0.764, rgb(255,255,181))
-	);
-	color: rgb(60,60,37);
-	width: 204px;
-	padding: 36px 24px;
-	-webkit-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
-	   -moz-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
-			box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
 
-}
-
-#resources {
-    top: 10; right: 36px;
-    width: 296px;
-}
-
-article {
-    border-width: 1px 0 0 0;
-    padding-top: 59px;
-    clear: both;
-    
-    padding-left: 48px;
-    padding-right: 48px;
-    margin: 0 auto;
-    width: 896px;
-    position: relative;
-}
