@@ -95,7 +95,7 @@ gmr.radio = function() {
         gmr.radio.updatePlaylist();
         gmr.radio.player.stop();
         $(gmr.radio.player.audio).empty();
-gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/' +gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
+gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
         gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/' +gmr.radio.playlist.tracks[gmr.radio.currentTrack].mp3);
         gmr.radio.player.play();
       } 
