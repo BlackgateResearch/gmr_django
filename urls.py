@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import *
 import settings
 from django.contrib import admin
+from django.views.generic.simple import direct_to_template
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -9,8 +11,10 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
-    {'document_root': settings.MEDIA_ROOT}),
-    
+        {'document_root': settings.MEDIA_ROOT}
+    ),
+   
+    (r'^$', direct_to_template, {'template': 'index.html'}), 
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
 
     (r'^radio/', include('radio.urls')),
