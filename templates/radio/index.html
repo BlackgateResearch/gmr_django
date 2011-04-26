@@ -6,16 +6,20 @@ gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.mp3')
 <button onclick="gmr.radio.loadPlaylist(1);">Load Playlist</button>
 <button onclick="gmr.radio.updatePlaylist();">Update Playlist</button>
 
-<div class="transport">
-  <button type="button" onclick="gmr.radio.previous()">&lt;&lt;</button>
-  <button type="button" onclick="gmr.radio.player.play()">&gt;</button>
-  <button type="button" onclick="gmr.radio.player.pause()">||</button>
-  <button type="button" onclick="gmr.radio.player.stop()">[]</button>
-  <button type="button" onclick="gmr.radio.next()">&gt;&gt;</button>
-</div>
-
 <ul id="playlist">
   <li>No Tracks</li>
 </ul>
+
+{% endblock %}
+
+{% block footer %}
+
+<div id="transport">
+  <a onclick="gmr.radio.previous()">&lt;&lt;</a>
+  <a onclick="gmr.radio.player.play()">&gt;</a>
+  <a onclick="gmr.radio.player.pause()">||</a>
+  <a onclick="gmr.radio.player.stop()">[]</a>
+  <a onclick="gmr.radio.next()">&gt;&gt;</a>
+</div>
 
 {% endblock %}
