@@ -4,7 +4,7 @@ from collections import namedtuple
 import settings
 from django.core import serializers
 from track.models import Track, Playlist, Preset, TrackPass
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -136,14 +136,18 @@ def playlist_generate(request):
      
     arguements
     '''
-    p = request.GET.get("positivity", 4)
-    a = request.GET.get("aggression", 4)
-    sp = request.GET.get("speed", 4)
-    su = request.GET.get("suspense", 4)
+    try:
+        p =  int(request.GET.get("positivity", 4))
+        a =  int(request.GET.get("aggression", 4))
+        sp = int(request.GET.get("speed",      4))
+        su = int(request.GET.get("suspense",   4))
+    except ValueError:
+        return HttpResponseBadRequest("PASS requests must be parseable into an int")
     
     genreDict = {}
     playlist = TrackPass.objects.all()
-    
+     
+    #TODO this is clearly a hack 
     #Add all tracks to a dictionary with the track as the key deviation as value
     count = float(0) #FLOAT'd'd!!!
     for track in playlist:
@@ -155,14 +159,14 @@ def playlist_generate(request):
         except KeyError:
             genreDict[deviation] = track
     sorted_track_passes = sortTracks(genreDict)
-    
+     
     tracks = []
     for trackpass in sorted_track_passes:
         try:
             tracks.append(Track.objects.get(pk=trackpass.track.id,published=True))
         except:
             pass #drop non-published tracks
-    
+     
     playlist_json = tracks_to_json_playlist(tracks)
     return HttpResponse(playlist_json, content_type='application/json')
 
