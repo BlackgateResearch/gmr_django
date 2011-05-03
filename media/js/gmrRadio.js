@@ -15,10 +15,33 @@ gmr.radio = function() {
     player : gmr.player,
     currentTrack : 0,
 
-    loadPlaylist : function() {
+    loadPlaylist : function(playlistID) {
       $.ajax({
         url: "/playlist/1",
         context: document.body,
+        contentType: 'application/json',
+        success: function(response){
+          gmr.radio.playlist = response;
+          console.log(gmr.radio.playlist);
+          gmr.radio.currentTrack = 0;
+          $(gmr.radio.player.audio).empty();
+          gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
+          gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].mp3);
+          console.log('Adding: ' + 'http://127.0.0.1:8000/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
+          gmr.radio.player.play();
+        }
+      });
+    },
+
+    generatePlaylist : function(positivity, aggression, speed, suspense) {
+      $.ajax({
+        url: "/playlist/generate",
+        context: document.body,
+        data: 
+          'positivity=' + positivity + '&' +
+          'aggression=' + aggression + '&' +
+          'speed=' + speed + '&' +
+          'suspense=' + suspense,          
         contentType: 'application/json',
         success: function(response){
           gmr.radio.playlist = response;
@@ -84,7 +107,7 @@ gmr.radio = function() {
       $('#playlist').empty();
       for (var i in gmr.radio.playlist.tracks) {
         var liExtra = '';
-        if (gmr.radio.currentTrack == i) { liExtra = ' style="background-color: red;"' }
+        if (gmr.radio.currentTrack == i) { liExtra = ' class="playing"' }
         $('#playlist').append('<li' + liExtra + '><a onclick="gmr.radio.jumpTo(' + i + ');">' + gmr.radio.playlist.tracks[i].name + '</a></li>');
       }
     },
