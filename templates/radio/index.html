@@ -1,10 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div id="pass">
+  <label for="positivity">Positivity</label>
+  <input id="positivity" type="range"  min="0" max="9" value="4" />
+  <label for="aggression">Aggression</label>
+  <input id="aggression" type="range"  min="0" max="9" value="4" />
+  <label for="speed">Speed</label>
+  <input id="speed" type="range"  min="0" max="9" value="4" />
+  <label for="suspense">Suspense</label>
+  <input id="suspense" type="range"  min="0" max="9" value="4" />
+  <button onclick="gmr.radio.generatePlaylist($('#positivity').val(), $('#aggression').val(), $('#speed').val(), $('#suspense').val());">Generate Playlist</button>
+</div>
+
+<br /><br />
+
 <button onclick="gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.ogg');
 gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.mp3');">Add Media</button>
 <button onclick="gmr.radio.loadPlaylist(1);">Load Playlist</button>
 <button onclick="gmr.radio.updatePlaylist();">Update Playlist</button>
+<button onclick="gmr.radio.generatePlaylist(1,2,3,4);">Test Pass</button>
 
 <ul id="playlist">
   <li>No Tracks</li>
@@ -15,11 +31,11 @@ gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.mp3')
 {% block footer %}
 
 <div id="transport">
-  <a onclick="gmr.radio.previous()">&lt;&lt;</a>
-  <a onclick="gmr.radio.player.play()">&gt;</a>
-  <a onclick="gmr.radio.player.pause()">||</a>
-  <a onclick="gmr.radio.player.stop()">[]</a>
-  <a onclick="gmr.radio.next()">&gt;&gt;</a>
+  <a class="transportButton" href="#" onclick="gmr.radio.previous()">&lt;&lt;</a>
+  <a class="transportButton" href="#" onclick="gmr.radio.player.play()">&gt;</a>
+  <a class="transportButton" href="#" onclick="gmr.radio.player.pause()">||</a>
+  <a class="transportButton" href="#" onclick="gmr.radio.player.stop()">[]</a>
+  <a class="transportButton" href="#" onclick="gmr.radio.next()">&gt;&gt;</a>
 </div>
 
 {% endblock %}
