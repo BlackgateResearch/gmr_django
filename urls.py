@@ -16,6 +16,7 @@ urlpatterns = patterns('',
    
     (r'^$', direct_to_template, {'template': 'index.html'}), 
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {"next_page":"/"}),
 
     (r'^radio/', include('radio.urls')),
     #(r'^track/', include('track.urls')),
