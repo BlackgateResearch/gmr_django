@@ -3,7 +3,7 @@ from collections import namedtuple
 
 import settings
 from django.core import serializers
-from track.models import Track, Playlist, Preset, TrackPass
+from track.models import Track, Playlist, Preset
 from django.http import HttpResponse, HttpResponseBadRequest
 
 from django.shortcuts import get_object_or_404
@@ -145,7 +145,7 @@ def playlist_generate(request):
         return HttpResponseBadRequest("PASS requests must be parseable into an int")
     
     genreDict = {}
-    playlist = TrackPass.objects.all()
+    playlist = Track.objects.all()
      
     #TODO this is clearly a hack 
     #Add all tracks to a dictionary with the track as the key deviation as value
@@ -176,10 +176,10 @@ def getDeviation(positivity,aggression,speed,suspense,track):
     return the deviation from the track
     TODO: use the sum of the squares
     """
-    deviationSpeed = int(positivity) - int(track.positivity)
-    deviationCombat = int(aggression) - int(track.aggression)
-    deviationSuspense = int(speed) - int(track.speed)
-    deviationPositive = int(suspense) - int(track.suspense)
+    deviationSpeed = int(positivity) - round(float(track.sum_positivity) / track.votes)
+    deviationCombat = int(aggression) - round(float(track.sum_aggression) / track.votes)
+    deviationSuspense = int(speed) - round(float(track.sum_speed) / track.votes)
+    deviationPositive = int(suspense) - round(float(track.sum_suspense) / track.votes)
 
     deviation = abs(deviationSpeed) \
         + abs(deviationCombat) \
