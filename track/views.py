@@ -145,7 +145,7 @@ def playlist_generate(request):
         return HttpResponseBadRequest("PASS requests must be parseable into an int")
     
     genreDict = {}
-    playlist = Track.objects.all()
+    playlist = Track.objects.filter(published=True)
      
     #TODO this is clearly a hack 
     #Add all tracks to a dictionary with the track as the key deviation as value
@@ -158,16 +158,9 @@ def playlist_generate(request):
             genreDict[deviation + count/100] = track
         except KeyError:
             genreDict[deviation] = track
-    sorted_track_passes = sortTracks(genreDict)
+    sorted_tracks = sortTracks(genreDict)
      
-    tracks = []
-    for trackpass in sorted_track_passes:
-        try:
-            tracks.append(Track.objects.get(pk=trackpass.track.id,published=True))
-        except:
-            pass #drop non-published tracks
-     
-    playlist_json = tracks_to_json_playlist(tracks)
+    playlist_json = tracks_to_json_playlist(sorted_tracks)
     return HttpResponse(playlist_json, content_type='application/json')
 
 def getDeviation(positivity,aggression,speed,suspense,track):
