@@ -1,7 +1,7 @@
 import os
 import sys
 
-path = '/usr/share/gmr/unstable/
+path = '/usr/share/gmr/unstable/'
 if path not in sys.path:
     sys.path.append(path)
 
