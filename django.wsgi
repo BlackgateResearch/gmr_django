@@ -13,4 +13,4 @@ if path not in sys.path:
 os.environ['DJANGO_SETTINGS_MODULE'] = 'gmr_django.settings'
 
 import gmr_django.django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+application = gmr_django.django.core.handlers.wsgi.WSGIHandler()
