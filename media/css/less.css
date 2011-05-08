@@ -117,20 +117,20 @@ section {
 }
 
 aside {
-	position: absolute;
-	z-index: 800;
-	background: rgb(255,255,158);
-	background: -webkit-gradient(linear, left top, left bottom, 
-		from(rgb(255,255,158)), 
-		color-stop(0.764, rgb(255,255,181))
-	);
-	color: rgb(60,60,37);
-	padding: 36px 50px;
-	-webkit-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
-	   -moz-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
-			box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
-    top: 1; bottom: auto; right: 36px;
-    width: 250px;
+    position: absolute;
+    z-index: 800;
+    background: rgb(255,255,158);
+    background: -webkit-gradient(linear, left top, left bottom, 
+        from(rgb(255,255,158)), 
+        color-stop(0.764, rgb(255,255,181))
+    );
+    color: rgb(60,60,37);
+    padding: 36px 50px;
+    -webkit-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
+    -moz-box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
+    box-shadow: 0 3px 3px rgba(0,0,0, 0.235);
+    top: 1; bottom: auto; right: 136px;
+    width: 150px;
 }
 
 

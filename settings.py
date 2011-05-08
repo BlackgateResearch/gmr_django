@@ -15,7 +15,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = 'gmr.db'
+DATABASE_NAME = path + '/gmr.db'
 
 TIME_ZONE = 'Europe/London'
 LANGUAGE_CODE = 'en-uk'
