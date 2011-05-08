@@ -5,7 +5,7 @@ path = '/usr/share/gmr/unstable/'
 if path not in sys.path:
     sys.path.append(path)
 
-project_path = '/usr/share/gmr/unstable/'
+project_path = '/usr/share/gmr/unstable/gmr_django/'
 if path not in sys.path:
     sys.path.append(project_path)
 
