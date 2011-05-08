@@ -48,9 +48,9 @@ gmr.radio = function() {
           console.log(gmr.radio.playlist);
           gmr.radio.currentTrack = 0;
           $(gmr.radio.player.audio).empty();
-          gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
-          gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].mp3);
-          console.log('Adding: ' + 'http://127.0.0.1:8000/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
+          gmr.radio.player.addSource('http://' + document.domain + ':' + document.location.port + '/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
+          gmr.radio.player.addSource('http://' + document.domain + ':' + document.location.port + '/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].mp3);
+          console.log('Adding: ' + 'http://' + document.domain + ':' + document.location.port + '/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
           gmr.radio.player.play();
         }
       });
