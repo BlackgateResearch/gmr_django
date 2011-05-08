@@ -26,8 +26,24 @@ nav {
   float: right;
 }
 
+#aux {
+  width: 150px;
+  height: 100%;
+  float: left;
+  background-color: #333333;
+}
+
 #content {
   margin-top: 25px;
+}
+
+#pass {
+
+}
+
+#pass label {
+  float: left;
+  width: 100px;
 }
 
 .playing {
