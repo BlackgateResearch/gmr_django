@@ -1,16 +1,30 @@
 {% extends "base.html" %}
 
+{% block aux %}
+
+{% endblock %}
+
 {% block content %}
 
 <div id="pass">
-  <label for="positivity">Positivity</label>
-  <input id="positivity" type="range"  min="0" max="9" value="4" />
-  <label for="aggression">Aggression</label>
-  <input id="aggression" type="range"  min="0" max="9" value="4" />
-  <label for="speed">Speed</label>
-  <input id="speed" type="range"  min="0" max="9" value="4" />
-  <label for="suspense">Suspense</label>
-  <input id="suspense" type="range"  min="0" max="9" value="4" />
+  <ul>
+    <li>
+      <label for="positivity">Positivity</label>
+      <input id="positivity" type="range"  min="0" max="9" value="4" />
+    </li>
+    <li>
+      <label for="aggression">Aggression</label>
+      <input id="aggression" type="range"  min="0" max="9" value="4" />
+    </li>
+    <li>
+      <label for="speed">Speed</label>
+      <input id="speed" type="range"  min="0" max="9" value="4" />
+    </li>
+    <li>    
+      <label for="suspense">Suspense</label>
+      <input id="suspense" type="range"  min="0" max="9" value="4" />
+    </li>
+  </ul>
   <button onclick="gmr.radio.generatePlaylist($('#positivity').val(), $('#aggression').val(), $('#speed').val(), $('#suspense').val());">Generate Playlist</button>
 </div>
 

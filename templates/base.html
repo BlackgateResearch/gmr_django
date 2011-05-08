@@ -37,10 +37,15 @@
 
         {% block navigation %}
         <nav>
-          <a href="/">Home</a>
-          
+          <span id="user">{{ request.user }}</span>
+          <a href="/">Logout</a>
           <a href="/contact">Contact</a>
         </nav>
+        {% endblock %}
+      </div>
+
+      <div id="aux">
+        {% block aux %}
         {% endblock %}
       </div>
 
