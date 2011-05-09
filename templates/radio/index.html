@@ -25,16 +25,13 @@
       <input id="suspense" type="range"  min="0" max="9" value="4" />
     </li>
   </ul>
-  <button onclick="gmr.radio.generatePlaylist($('#positivity').val(), $('#aggression').val(), $('#speed').val(), $('#suspense').val());">Generate Playlist</button>
+  <button onclick="gmr.radio.generatePlaylist($('#positivity').val(), $('#aggression').val(), $('#speed').val(), $('#suspense').val());">Play</button>
 </div>
 
 <br /><br />
 
-<button onclick="gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.ogg');
-gmr.radio.player.addSource('http://127.0.0.1:8000/site_media/track/itcrowd.mp3');">Add Media</button>
 <button onclick="gmr.radio.loadPlaylist(1);">Load Playlist</button>
 <button onclick="gmr.radio.updatePlaylist();">Update Playlist</button>
-<button onclick="gmr.radio.generatePlaylist(1,2,3,4);">Test Pass</button>
 
 <ul id="playlist">
   <li>No Tracks</li>
