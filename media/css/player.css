@@ -29,8 +29,9 @@ nav {
 #aux {
   width: 150px;
   height: 100%;
+  min-height: 100%;
   float: left;
-  background-color: #333333;
+  background-color: #dddddd;
 }
 
 #content {
