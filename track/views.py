@@ -153,11 +153,12 @@ def playlist_generate(request):
     for track in playlist:
         count = count + 1
         deviation = int(getDeviation(p,a,sp,su,track))
-        try:
-            genreDict[deviation]
-            genreDict[deviation + count/100] = track
-        except KeyError:
-            genreDict[deviation] = track
+        if True:
+            try:
+                genreDict[deviation]
+                genreDict[deviation + count/100] = track
+            except KeyError:
+                genreDict[deviation] = track
     sorted_tracks = sortTracks(genreDict)
      
     playlist_json = tracks_to_json_playlist(sorted_tracks)
@@ -184,6 +185,7 @@ def getDeviation(positivity,aggression,speed,suspense,track):
 def sortTracks(genreDict):
     """
     Takes a dictionary of deviation:track, sorts it by deviation,
-    and returns the ordered list of tracks
+    and returns the ordered list of tracks.
     """
-    return [genreDict[key] for key in sorted(genreDict.keys())]
+    deviation_from_pass = 10
+    return [genreDict[key] for key in sorted(genreDict.keys()) if key < deviation_from_pass]
