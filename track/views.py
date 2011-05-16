@@ -187,5 +187,5 @@ def sortTracks(genreDict):
     Takes a dictionary of deviation:track, sorts it by deviation,
     and returns the ordered list of tracks.
     """
-    deviation_from_pass = 15
+    deviation_from_pass = 10
     return [genreDict[key] for key in sorted(genreDict.keys()) if key < deviation_from_pass]
