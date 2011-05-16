@@ -52,6 +52,7 @@ gmr.radio = function() {
           gmr.radio.player.addSource('http://' + document.domain + ':' + document.location.port + '/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].mp3);
           console.log('Adding: ' + 'http://' + document.domain + ':' + document.location.port + '/site_media/' + gmr.radio.playlist.tracks[gmr.radio.currentTrack].ogg);
           gmr.radio.player.play();
+          gmr.radio.updatePlaylist();
         }
       });
     },
@@ -79,6 +80,8 @@ gmr.radio = function() {
       } else {
         //end of playlist
         console.log('No more tracks');
+        gmr.radio.jumpTo(0);
+        gmr.radio.player.play();
       }
     },
 
