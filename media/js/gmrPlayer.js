@@ -27,9 +27,9 @@ gmr.player = function() {
     },
     
     //Sets the callback for the onended event
-    assignEndCallback : function(reference) {
-      gmr.player.endCallback = reference;
-      $(gmr.player.audio).bind('ended', gmr.player.endCallback());
+    assignEndCallback : function(callback) {
+      gmr.player.endCallback = callback;
+      $(gmr.player.audio).bind('ended', gmr.player.endCallback);
     },
     
     play : function() {

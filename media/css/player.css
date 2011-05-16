@@ -6,6 +6,15 @@ Blackgate Research
 
 html {
   font-family: helvetica, sans-serif;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#wrapper {
+  height: 100%;
 }
 
 #header {
