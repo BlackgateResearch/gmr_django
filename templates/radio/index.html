@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block aux %}
-<p>Sidebar</p> 
+ 
 {% endblock %}
 
 {% block content %}
@@ -25,13 +25,8 @@
       <input id="suspense" type="range"  min="0" max="9" value="4" />
     </li>
   </ul>
-  <button onclick="gmr.radio.generatePlaylist($('#positivity').val(), $('#aggression').val(), $('#speed').val(), $('#suspense').val());
-  setTimeout('gmr.radio.updatePlaylist()',250);">Play</button>
+  <button onclick="gmr.radio.generatePlaylist($('#positivity').val(), $('#aggression').val(), $('#speed').val(), $('#suspense').val());">Play</button>
 </div>
-
-<br /><br />
-
-<button onclick="gmr.radio.updatePlaylist();">Update Playlist</button> <-click if playlist does not show after playing
 
 <ul id="playlist">
   <li>No Tracks</li>
