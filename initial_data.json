@@ -31,7 +31,24 @@
             "mp3": "track/itcrowd.mp3",
             "name": "IT Crowd Theme",
             "artist": 1 
+        },
+            {
+        "pk": 2,
+        "model": "track.track",
+        "fields": {
+            "votes": 1,
+            "sum_speed": 7,
+            "description": "TOP's",
+            "artist": 1,
+            "sum_positivity": 8,
+            "sum_suspense": 1,
+            "sum_aggression": 3,
+            "mp3": "track/Digin_on_james_brown_hits.mp3",
+            "published": true,
+            "ogg": "track/Digin_on_james_brown_hits.mp3",
+            "name": "Diggin' Hits"
         }
+    },
     },
 
     {
