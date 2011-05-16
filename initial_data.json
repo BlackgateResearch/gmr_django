@@ -10,29 +10,31 @@
             "is_superuser": true,
             "is_staff": true,
             "last_login": "2010-11-12 21:41:22",
-            "groups": [
-                
-            ],
-            "user_permissions": [
-                
-            ],
+            "groups": [],
+            "user_permissions": [],
             "password": "sha1$55d99$1483e6dde52c77be578599526aacf5081ebd21d4",
             "email": "admin@gamemasterradio.com",
-            "date_joined": "2010-11-12 21:41:22" 
-        } 
+            "date_joined": "2010-11-12 21:41:22"
+        }
     },
-
-   {
+    {
         "pk": 1,
         "model": "track.track",
         "fields": {
+            "votes": 1,
+            "sum_speed": 4,
             "description": "I love that show.",
-            "ogg": "track/itcrowd.ogg",
+            "artist": 1,
+            "sum_positivity": 4,
+            "sum_suspense": 4,
+            "sum_aggression": 4,
             "mp3": "track/itcrowd.mp3",
-            "name": "IT Crowd Theme",
-            "artist": 1 
-        },
-            {
+            "published": true,
+            "ogg": "track/itcrowd.ogg",
+            "name": "IT Crowd Theme"
+        }
+    },
+    {
         "pk": 2,
         "model": "track.track",
         "fields": {
@@ -45,12 +47,10 @@
             "sum_aggression": 3,
             "mp3": "track/Digin_on_james_brown_hits.mp3",
             "published": true,
-            "ogg": "track/Digin_on_james_brown_hits.mp3",
+            "ogg": "track/Digin_on_james_brown_hits_1.mp3",
             "name": "Diggin' Hits"
         }
     },
-    },
-
     {
         "pk": 1,
         "model": "artist.artist",
@@ -58,7 +58,7 @@
             "picture": "artist/pictures/headshot-crossedarms2-web-medium.png",
             "description": "Namtao is an artist.",
             "user": 1,
-            "name": "Namtao" 
+            "name": "Namtao"
         }
     }
 ]
